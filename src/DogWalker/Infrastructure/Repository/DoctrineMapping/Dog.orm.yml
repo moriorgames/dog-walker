@@ -1,0 +1,8 @@
+DogWalker\Domain\Entity\Dog:
+    type: entity
+    table: dog
+    id:
+        uuid:
+            type: string
+            generator:
+                strategy: NONE

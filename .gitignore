@@ -1,0 +1,26 @@
+
+# System files
+.DS_Store
+.git
+.idea
+
+# Cache, session files and logs
+var/cache/*
+!var/cache/.gitkeep
+var/log/*
+!var/log/.gitkeep
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+vendor/*
+!vendor/.gitkeep
+###< symfony/framework-bundle ###
+
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###

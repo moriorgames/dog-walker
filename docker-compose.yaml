@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+    dog-walker-php:
+        build:
+            context: .
+        restart: unless-stopped
+        env_file:
+        - .env.local
+        container_name: dog-walker-php
+        ports:
+        - "8085:80"
+        volumes:
+        - "${PWD}/:/app"
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "./docker/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf"
+        tty: true
+
+    mysql:
+        image: mysql:5.7
+        env_file: mysql/mysql.env
+        container_name: dog-walker-ddbb
+        volumes:
+        - "${PWD}/mysql/init:/docker-entrypoint-initdb.d/"
+        ports:
+        - "3308:3306"
+
+networks:
+    default:
+        external:
+            name: dev
