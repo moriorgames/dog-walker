@@ -1,0 +1,4 @@
+index_ping:
+    path: /ping
+    controller: DogWalker\UI\Controller\IndexController::ping
+    methods: GET
