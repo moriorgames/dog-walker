@@ -1,4 +1,14 @@
 index_ping:
     path: /ping
-    controller: DogWalker\UI\Controller\IndexController::ping
+    controller: DogWalker\UI\Symfony\Controller\IndexController::ping
+    methods: GET
+
+register_dog:
+    path: /dog
+    controller: DogWalker\UI\Symfony\Controller\DogController::registerDog
+    methods: POST
+
+get_dog_details:
+    path: /dog/{dog_uuid}
+    controller: DogWalker\UI\Symfony\Controller\DogController::getDogDetails
     methods: GET

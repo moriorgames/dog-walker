@@ -6,3 +6,22 @@ DogWalker\Domain\Entity\Dog:
             type: string
             generator:
                 strategy: NONE
+    fields:
+        owner:
+            type: string
+            nullable: false
+        name:
+            type: string
+            nullable: false
+        breed:
+            type: string
+            nullable: false
+        age:
+            type: integer
+            nullable: false
+        createdAt:
+            type: datetime
+            nullable: false
+        updatedAt:
+            type: datetime
+            nullable: false

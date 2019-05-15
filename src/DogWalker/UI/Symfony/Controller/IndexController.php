@@ -7,13 +7,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IndexController
 {
-    public function ping()
+    public function ping(): JsonResponse
     {
-        $response = [
+        return new JsonResponse([
             'data' => [
+                'message' => 'success',
             ],
-        ];
-
-        return new JsonResponse($response, Response::HTTP_OK);
+        ], Response::HTTP_OK);
     }
 }
