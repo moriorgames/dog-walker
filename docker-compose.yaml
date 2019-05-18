@@ -2,12 +2,12 @@ version: "3"
 
 services:
     dog-walker-php:
-        build:
-            context: .
+        build: .
+        image: moriorgames/dog-walker-php
         restart: unless-stopped
         env_file:
         - .env.local
-        container_name: dog-walker-php
+        container_name: dog_walker_php
         ports:
         - "8085:80"
         volumes:
@@ -16,10 +16,11 @@ services:
         - "./docker/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf"
         tty: true
 
+    # Depends on backend MYSQL
     mysql:
         image: mysql:5.7
         env_file: mysql/mysql.env
-        container_name: dog-walker-ddbb
+        container_name: dog_walker_db
         volumes:
         - "${PWD}/mysql/init:/docker-entrypoint-initdb.d/"
         ports:
