@@ -14,6 +14,9 @@ class DogController
 {
     public function registerDog(Request $request, RegisterDog $service): JsonResponse
     {
+        // @TODO: this is temporary while doing test, remove please
+        header("Access-Control-Allow-Origin: *");
+
         $input = new RegisterDogInput(
             $request->get('owner'),
             $request->get('name'),
@@ -26,6 +29,9 @@ class DogController
 
     public function getDogDetails(Request $request, GetDogDetails $service): JsonResponse
     {
+        // @TODO: this is temporary while doing test, remove please
+        header("Access-Control-Allow-Origin: *");
+
         $input = new GetDogDetailsInput(
             $request->get('dog_uuid')
         );
