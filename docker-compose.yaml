@@ -8,10 +8,29 @@ services:
         env_file:
         - .env.local
         container_name: dog_walker_php
+        environment:
+        - PORT=8081
         ports:
-        - "8085:80"
+        - "8081:80"
         volumes:
-        - "${PWD}/:/app"
+        # Comment next line to work locally sync files between your host and docker container
+#        - "${PWD}/:/app"
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "./docker/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf"
+        tty: true
+
+    dog-walker-php-2:
+        build: .
+        image: moriorgames/dog-walker-php
+        restart: unless-stopped
+        env_file:
+        - .env.local
+        container_name: dog_walker_php_2
+        environment:
+        - PORT=8082
+        ports:
+        - "8082:80"
+        volumes:
         - "/var/run/docker.sock:/var/run/docker.sock"
         - "./docker/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf"
         tty: true
@@ -25,6 +44,14 @@ services:
         - "${PWD}/mysql/init:/docker-entrypoint-initdb.d/"
         ports:
         - "3308:3306"
+
+    nginx:
+        image: nginx
+        container_name: dog_walker_nginx
+        ports:
+        - "8080:80"
+        volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
 
 networks:
     default:

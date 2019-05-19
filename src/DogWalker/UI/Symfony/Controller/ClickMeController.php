@@ -2,12 +2,11 @@
 
 namespace DogWalker\UI\Symfony\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndexController
+class ClickMeController
 {
-    public function home(): Response
+    public function get(): Response
     {
         $port = getenv('PORT');
         $content = <<< HTML
@@ -20,12 +19,12 @@ class IndexController
     <title>React App</title>
     <style>
         .button__container {
-    margin-top: 200px;
+            margin-top: 200px;
             text-align: center
         }
 
         .button {
-    background-color: green;
+            background-color: green;
             border: none;
             color: #fff;
             font-size: 16px;
@@ -34,14 +33,14 @@ class IndexController
         }
 
         body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale
         }
 
         code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
+            font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
         }
     </style>
 </head>
@@ -64,14 +63,5 @@ class IndexController
 HTML;
 
         return new Response($content);
-    }
-
-    public function ping(): JsonResponse
-    {
-        return new JsonResponse([
-            'data' => [
-                'message' => 'success',
-            ],
-        ], Response::HTTP_OK);
     }
 }

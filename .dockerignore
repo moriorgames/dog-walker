@@ -1,3 +1,10 @@
 
 .git
 .idea
+
+Dockerfile
+docker-compose.yaml
+
+vendor/
+var/cache/
+var/log/
