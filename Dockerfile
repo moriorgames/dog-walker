@@ -12,4 +12,10 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
+COPY . .
+
+RUN php phars/composer.phar install
+# For production
+#RUN php phars/composer.phar install --optimize-autoloader
+
 CMD ["apache2-foreground"]

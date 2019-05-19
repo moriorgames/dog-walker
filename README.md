@@ -21,3 +21,10 @@ $ docker network create dev
 # Run project with docker-compose
 $ docker-compose up -d
 ´´´
+
+## About Ngnix
+``` 
+# docker cp docker/etc/nginx/conf.d/default.conf dog_walker_nginx:/etc/nginx/conf.d/default.conf
+# docker restart dog_walker_nginx
+# docker logs -f dog_walker_nginx
+```
