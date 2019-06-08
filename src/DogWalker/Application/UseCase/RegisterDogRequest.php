@@ -1,8 +1,8 @@
 <?php
 
-namespace DogWalker\Application\Service;
+namespace DogWalker\Application\UseCase;
 
-class RegisterDogInput
+class RegisterDogRequest
 {
     /** @var string */
     private $owner;

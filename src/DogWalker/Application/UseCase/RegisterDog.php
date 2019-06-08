@@ -1,6 +1,6 @@
 <?php
 
-namespace DogWalker\Application\Service;
+namespace DogWalker\Application\UseCase;
 
 use DogWalker\Application\Transformer\DogTransformer;
 use DogWalker\Domain\Entity\Dog;
@@ -20,7 +20,7 @@ class RegisterDog
         $this->dogTransformer = $dogTransformer;
     }
 
-    public function execute(RegisterDogInput $input): array
+    public function execute(RegisterDogRequest $input): array
     {
         $uuid = Uuid::uuid4()->toString();
         $dog = Dog::create($uuid, $input->getOwner(), $input->getName(), $input->getBreed(), $input->getAge());
