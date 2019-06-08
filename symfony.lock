@@ -117,6 +117,9 @@
     "symfony/cache": {
         "version": "v4.2.5"
     },
+    "symfony/cache-contracts": {
+        "version": "v1.1.1"
+    },
     "symfony/config": {
         "version": "v4.2.5"
     },
@@ -156,6 +159,9 @@
     },
     "symfony/event-dispatcher": {
         "version": "v4.2.5"
+    },
+    "symfony/event-dispatcher-contracts": {
+        "version": "v1.1.1"
     },
     "symfony/filesystem": {
         "version": "v4.2.5"
@@ -200,6 +206,9 @@
     "symfony/http-kernel": {
         "version": "v4.2.5"
     },
+    "symfony/mime": {
+        "version": "v4.3.1"
+    },
     "symfony/orm-pack": {
         "version": "v1.0.6"
     },
@@ -219,10 +228,16 @@
             "tests/.gitignore"
         ]
     },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.11.0"
     },
     "symfony/polyfill-php72": {
+        "version": "v1.11.0"
+    },
+    "symfony/polyfill-php73": {
         "version": "v1.11.0"
     },
     "symfony/routing": {
@@ -239,6 +254,9 @@
             "config/packages/test/routing.yaml",
             "config/routes.yaml"
         ]
+    },
+    "symfony/service-contracts": {
+        "version": "v1.1.2"
     },
     "symfony/stopwatch": {
         "version": "v4.2.5"
