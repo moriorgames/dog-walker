@@ -17,6 +17,8 @@ var/log/*
 /public/bundles/
 vendor/*
 !vendor/.gitkeep
+coverage/*
+!coverage/.gitkeep
 ###< symfony/framework-bundle ###
 
 

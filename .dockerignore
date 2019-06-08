@@ -5,6 +5,8 @@
 Dockerfile
 docker-compose.yaml
 
-vendor/
+coverage/
+tests/
 var/cache/
 var/log/
+vendor/
