@@ -14,7 +14,7 @@ services:
         - "8081:80"
         volumes:
         # Comment next line to work locally sync files between your host and docker container
-#        - "${PWD}/:/app"
+        - "${PWD}/:/app"
         - "/var/run/docker.sock:/var/run/docker.sock"
         - "./docker/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf"
         tty: true
@@ -52,6 +52,7 @@ services:
         - "8080:80"
         volumes:
         - "/var/run/docker.sock:/var/run/docker.sock"
+        - "./docker/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf"
 
 networks:
     default:

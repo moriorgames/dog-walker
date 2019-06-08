@@ -1,8 +1,8 @@
 <?php
 
-namespace DogWalker\Application\Service;
+namespace DogWalker\Application\UseCase;
 
-class GetDogDetailsInput
+class GetDogDetailsRequest
 {
     /** @var string */
     private $uuid;

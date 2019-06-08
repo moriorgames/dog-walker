@@ -1,6 +1,6 @@
 <?php
 
-namespace DogWalker\Application\Service;
+namespace DogWalker\Application\UseCase;
 
 use DogWalker\Application\Transformer\DogTransformer;
 use DogWalker\Domain\Repository\DogRepository;
@@ -18,9 +18,9 @@ class GetDogDetails
         $this->dogTransformer = $dogTransformer;
     }
 
-    public function execute(GetDogDetailsInput $input): array
+    public function execute(GetDogDetailsRequest $request): array
     {
-        $dog = $this->dogRepository->findById($input->getUuid());
+        $dog = $this->dogRepository->findById($request->getUuid());
 
         return $this->dogTransformer->transform($dog);
     }

@@ -2,10 +2,10 @@
 
 namespace DogWalker\UI\Symfony\Controller;
 
-use DogWalker\Application\Service\GetDogDetails;
-use DogWalker\Application\Service\GetDogDetailsInput;
-use DogWalker\Application\Service\RegisterDog;
-use DogWalker\Application\Service\RegisterDogInput;
+use DogWalker\Application\UseCase\GetDogDetails;
+use DogWalker\Application\UseCase\GetDogDetailsRequest;
+use DogWalker\Application\UseCase\RegisterDog;
+use DogWalker\Application\UseCase\RegisterDogRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ class DogController
         // @TODO: this is temporary while doing test, remove please
         header("Access-Control-Allow-Origin: *");
 
-        $input = new RegisterDogInput(
+        $input = new RegisterDogRequest(
             $request->get('owner'),
             $request->get('name'),
             $request->get('breed'),
@@ -32,7 +32,7 @@ class DogController
         // @TODO: this is temporary while doing test, remove please
         header("Access-Control-Allow-Origin: *");
 
-        $input = new GetDogDetailsInput(
+        $input = new GetDogDetailsRequest(
             $request->get('dog_uuid')
         );
 
