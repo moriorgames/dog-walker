@@ -1,11 +1,11 @@
-register_dog:
+dog_register:
     path: /dog
-    controller: DogWalker\UI\Symfony\Controller\DogController::registerDog
+    controller: DogWalker\UI\Symfony\Controller\RegisterDogController::handle
     methods: POST
 
-get_dog_details:
+dog_details:
     path: /dog/{dog_uuid}
-    controller: DogWalker\UI\Symfony\Controller\DogController::getDogDetails
+    controller: DogWalker\UI\Symfony\Controller\DogDetailsController::handle
     methods: GET
 
 click_me:

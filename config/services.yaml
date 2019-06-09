@@ -22,3 +22,10 @@ services:
     WebFront\UI\Symfony\Controller\:
         resource: '../src/WebFront/UI/Symfony/Controller'
         tags: ['controller.service_arguments']
+
+    # Custom services
+    app.dog_repository:
+        class: DogWalker\Infrastructure\Repository\DoctrineDogRepository
+
+    # Custom bindings
+    DogWalker\Domain\Repository\DogRepository: '@app.dog_repository'
