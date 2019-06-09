@@ -14,7 +14,8 @@
         "symfony/framework-bundle": "4.3.*",
         "symfony/orm-pack": "^1.0",
         "symfony/routing": "4.3.*",
-        "symfony/yaml": "4.3.*"
+        "symfony/yaml": "4.3.*",
+        "webmozart/assert": "^1.4"
     },
     "config": {
         "preferred-install": {

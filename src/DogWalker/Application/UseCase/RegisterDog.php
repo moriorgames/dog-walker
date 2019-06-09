@@ -5,7 +5,7 @@ namespace DogWalker\Application\UseCase;
 use DogWalker\Application\Transformer\DogTransformer;
 use DogWalker\Domain\Entity\Dog;
 use DogWalker\Domain\Repository\DogRepository;
-use Ramsey\Uuid\Uuid;
+use DogWalker\Domain\ValueObject\DogId;
 
 class RegisterDog
 {
@@ -22,8 +22,7 @@ class RegisterDog
 
     public function execute(RegisterDogRequest $input): array
     {
-        $uuid = Uuid::uuid4()->toString();
-        $dog = Dog::create($uuid, $input->getOwner(), $input->getName(), $input->getBreed(), $input->getAge());
+        $dog = Dog::create(new DogId, $input->getOwner(), $input->getName(), $input->getBreed(), $input->getAge());
         $this->dogRepository->save($dog);
 
         return $this->dogTransformer->transform($dog);

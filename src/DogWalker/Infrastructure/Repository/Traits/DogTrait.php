@@ -9,7 +9,7 @@ trait DogTrait
 {
     protected function createValidDog(): Dog
     {
-        $uuid = 'fake-dog-uuid';
+        $uuid = '69b0fb62-99f5-48e1-8717-ced52a3f3088';
         $owner = 'fake-owner-uuid';
         $name = 'Lua';
         $breed = 'greyhound';
