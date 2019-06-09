@@ -1,6 +1,6 @@
 <?php
 
-namespace Traits;
+namespace DogWalker\Infrastructure\Repository\Traits;
 
 use DogWalker\Domain\Entity\Dog;
 
