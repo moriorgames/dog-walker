@@ -1,6 +1,6 @@
 <?php
 
-namespace DogWalker\UI\Symfony;
+namespace SharedKernel\UI\Symfony;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;

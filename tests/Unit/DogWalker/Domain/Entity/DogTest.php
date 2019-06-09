@@ -5,6 +5,7 @@ namespace Unit\DogWalker\Domain\Entity;
 use DogWalker\Domain\Entity\Dog;
 use DogWalker\Domain\ValueObject\DogId;
 use PHPUnit\Framework\TestCase;
+use SharedKernel\Domain\Exception\InvalidArgumentException;
 
 class DogTest extends TestCase
 {
@@ -23,7 +24,7 @@ class DogTest extends TestCase
 
     public function test_throws_domain_exception_when_id_is_not_valid_uuid()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $uuid = 'fake-uuid';
         $owner = 'Jaimie';
         $name = 'Toby';
