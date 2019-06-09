@@ -42,6 +42,18 @@ class Dog
         return $this->uuid;
     }
 
+    /**
+     * @param string $uuid
+     *
+     * @return $this
+     */
+    public function setUuid($uuid)
+    {
+        $this->uuid = $uuid;
+
+        return $this;
+    }
+
     public function getOwner(): string
     {
         return $this->owner;

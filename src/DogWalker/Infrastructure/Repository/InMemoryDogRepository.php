@@ -4,28 +4,29 @@ namespace DogWalker\Infrastructure\Repository;
 
 use DogWalker\Domain\Entity\Dog;
 use DogWalker\Domain\Repository\DogRepository;
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use DogWalker\Infrastructure\Exception\EntityNotFoundException;
+use DogWalker\Infrastructure\Repository\Traits\DogTrait;
 
 class InMemoryDogRepository implements DogRepository
 {
+    use DogTrait;
+
     private $memory = [];
 
     public function __construct()
     {
-        $this->save($this->generateValidInstanceOfDog());
+        $this->save($this->createValidDog());
     }
 
-    public function save(Dog $dog): Dog
+    public function save(Dog $dog): void
     {
         $this->memory[$dog->getUuid()] = $dog;
-
-        return $dog;
     }
 
     public function findById(string $id): Dog
     {
         if (!isset($this->memory[$id])) {
-            throw new ResourceNotFoundException('Resource Model Not found');
+            throw new EntityNotFoundException(Dog::class, $id);
         }
 
         return $this->memory[$id];
@@ -34,16 +35,5 @@ class InMemoryDogRepository implements DogRepository
     public function findAll(): array
     {
         return $this->memory;
-    }
-
-    private function generateValidInstanceOfDog(): Dog
-    {
-        $uuid = 'fake-dog-uuid';
-        $owner = 'fake-owner-uuid';
-        $name = 'Lua';
-        $breed = 'greyhound';
-        $age = 2;
-
-        return Dog::create($uuid, $owner, $name, $breed, $age);
     }
 }

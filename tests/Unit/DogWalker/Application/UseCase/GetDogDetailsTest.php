@@ -5,11 +5,11 @@ namespace Unit\DogWalker\Application\UseCase;
 use DogWalker\Application\UseCase\GetDogDetails;
 use DogWalker\Application\UseCase\GetDogDetailsRequest;
 use DogWalker\Domain\Repository\DogRepository;
+use DogWalker\Infrastructure\Repository\Traits\DogTrait;
 use DogWalker\Infrastructure\Transformer\ApiDogTransformer;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\MethodProphecy;
 use Prophecy\Prophecy\ObjectProphecy;
-use Traits\DogTrait;
 
 class GetDogDetailsTest extends TestCase
 {

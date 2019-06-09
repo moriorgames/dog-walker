@@ -6,7 +6,9 @@ use DogWalker\Domain\Entity\Dog;
 
 interface DogRepository
 {
-    public function save(Dog $dog): Dog;
+    public function save(Dog $dog): void;
 
     public function findById(string $id): Dog;
+
+    public function findAll(): array;
 }
