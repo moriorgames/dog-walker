@@ -20,7 +20,7 @@ class InMemoryDogRepository implements DogRepository
 
     public function save(Dog $dog): void
     {
-        $this->memory[$dog->getUuid()] = $dog;
+        $this->memory[$dog->getId()] = $dog;
     }
 
     public function findById(string $id): Dog

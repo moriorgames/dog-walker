@@ -3,6 +3,7 @@
 namespace DogWalker\Infrastructure\Repository\Traits;
 
 use DogWalker\Domain\Entity\Dog;
+use DogWalker\Domain\ValueObject\DogId;
 
 trait DogTrait
 {
@@ -14,6 +15,6 @@ trait DogTrait
         $breed = 'greyhound';
         $age = 2;
 
-        return Dog::create($uuid, $owner, $name, $breed, $age);
+        return Dog::create(new DogId($uuid), $owner, $name, $breed, $age);
     }
 }

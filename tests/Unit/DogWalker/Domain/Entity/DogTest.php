@@ -3,6 +3,7 @@
 namespace Unit\DogWalker\Domain\Entity;
 
 use DogWalker\Domain\Entity\Dog;
+use DogWalker\Domain\ValueObject\DogId;
 use PHPUnit\Framework\TestCase;
 
 class DogTest extends TestCase
@@ -15,8 +16,8 @@ class DogTest extends TestCase
         $breed = 'Greyhound';
         $age = 4;
 
-        $sut = Dog::create($uuid, $owner, $name, $breed, $age);
+        $sut = Dog::create(new DogId($uuid), $owner, $name, $breed, $age);
 
-        $this->assertEquals($uuid, $sut->getUuid());
+        $this->assertEquals($uuid, $sut->getId());
     }
 }
