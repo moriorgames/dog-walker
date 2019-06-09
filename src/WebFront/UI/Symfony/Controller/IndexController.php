@@ -1,12 +1,12 @@
 <?php
 
-namespace DogWalker\UI\Symfony\Controller;
+namespace WebFront\UI\Symfony\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class ClickMeController
+class IndexController
 {
-    public function get(): Response
+    public function handle(): Response
     {
         $port = getenv('PORT');
         $content = <<< HTML
@@ -19,12 +19,12 @@ class ClickMeController
     <title>React App</title>
     <style>
         .button__container {
-            margin-top: 200px;
+    margin-top: 200px;
             text-align: center
         }
 
         .button {
-            background-color: green;
+    background-color: green;
             border: none;
             color: #fff;
             font-size: 16px;
@@ -33,14 +33,14 @@ class ClickMeController
         }
 
         body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale
         }
 
         code {
-            font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
+    font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace
         }
     </style>
 </head>

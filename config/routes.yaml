@@ -1,13 +1,3 @@
-home:
-    path: /
-    controller: DogWalker\UI\Symfony\Controller\IndexController::home
-    methods: GET
-
-index_ping:
-    path: /ping
-    controller: DogWalker\UI\Symfony\Controller\IndexController::ping
-    methods: GET
-
 register_dog:
     path: /dog
     controller: DogWalker\UI\Symfony\Controller\DogController::registerDog
@@ -18,7 +8,17 @@ get_dog_details:
     controller: DogWalker\UI\Symfony\Controller\DogController::getDogDetails
     methods: GET
 
-get_click_me:
+click_me:
     path: /click_me
-    controller: DogWalker\UI\Symfony\Controller\ClickMeController::get
+    controller: WebFront\UI\Symfony\Controller\ClickMeController::handle
+    methods: GET
+
+health:
+    path: /health
+    controller: WebFront\UI\Symfony\Controller\HealthController::handle
+    methods: GET
+
+index:
+    path: /
+    controller: WebFront\UI\Symfony\Controller\IndexController::handle
     methods: GET
