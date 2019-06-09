@@ -3,11 +3,12 @@
 namespace DogWalker\Domain\Entity;
 
 use DateTime;
+use DogWalker\Domain\ValueObject\DogId;
 
 class Dog
 {
     /** @var string */
-    private $uuid;
+    private $id;
     /** @var string */
     private $owner;
     /** @var string */
@@ -21,9 +22,9 @@ class Dog
     /** @var DateTime */
     private $updatedAt;
 
-    private function __construct(string $uuid, string $owner, string $name, string $breed, int $age)
+    private function __construct(string $id, string $owner, string $name, string $breed, int $age)
     {
-        $this->uuid = $uuid;
+        $this->id = $id;
         $this->owner = $owner;
         $this->name = $name;
         $this->breed = $breed;
@@ -32,26 +33,14 @@ class Dog
         $this->updatedAt = new DateTime;
     }
 
-    public static function create(string $uuid, string $owner, string $name, string $breed, int $age): self
+    public static function create(DogId $id, string $owner, string $name, string $breed, int $age): self
     {
-        return new static($uuid, $owner, $name, $breed, $age);
+        return new static($id->toString(), $owner, $name, $breed, $age);
     }
 
-    public function getUuid(): string
+    public function getId(): string
     {
-        return $this->uuid;
-    }
-
-    /**
-     * @param string $uuid
-     *
-     * @return $this
-     */
-    public function setUuid($uuid)
-    {
-        $this->uuid = $uuid;
-
-        return $this;
+        return $this->id;
     }
 
     public function getOwner(): string

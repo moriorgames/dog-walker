@@ -21,11 +21,11 @@ class GetDogDetailsTest extends TestCase
         /** @var ObjectProphecy|DogRepository $repository */
         $repository = $this->prophesize(DogRepository::class);
         /** @var MethodProphecy $repositoryExpectation */
-        $repositoryExpectation = $repository->findById($dog->getUuid())->willReturn($dog);
+        $repositoryExpectation = $repository->findById($dog->getId())->willReturn($dog);
 
         $useCase = new GetDogDetails($repository->reveal(), new ApiDogTransformer);
         $request = new GetDogDetailsRequest(
-            $dog->getUuid()
+            $dog->getId()
         );
 
         $useCase->execute($request);

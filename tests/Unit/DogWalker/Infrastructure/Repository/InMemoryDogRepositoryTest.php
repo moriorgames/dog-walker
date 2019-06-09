@@ -41,7 +41,7 @@ class InMemoryDogRepositoryTest extends TestCase
         $dog = $this->createValidDog();
         $this->sut->save($dog);
 
-        $result = $this->sut->findById($dog->getUuid());
+        $result = $this->sut->findById($dog->getId());
 
         $this->assertEquals($dog, $result);
     }
