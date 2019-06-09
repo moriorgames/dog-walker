@@ -1,6 +1,6 @@
 <?php
 
-use DogWalker\UI\Symfony\Kernel;
+use SharedKernel\UI\Symfony\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
