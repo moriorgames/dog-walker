@@ -10,5 +10,5 @@ interface DogRepository
 
     public function findById(string $id): Dog;
 
-    public function findAll(): array;
+    public function findAll();
 }
