@@ -18,3 +18,7 @@ services:
     DogWalker\UI\Symfony\Controller\:
         resource: '../src/DogWalker/UI/Symfony/Controller'
         tags: ['controller.service_arguments']
+
+    WebFront\UI\Symfony\Controller\:
+        resource: '../src/WebFront/UI/Symfony/Controller'
+        tags: ['controller.service_arguments']
