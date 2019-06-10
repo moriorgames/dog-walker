@@ -1,6 +1,6 @@
 <?php
 
-namespace DogWalker\UI\Symfony\Controller;
+namespace DogWalker\UI\Controller;
 
 use DogWalker\Application\UseCase\GetDogDetails;
 use DogWalker\Application\UseCase\GetDogDetailsRequest;

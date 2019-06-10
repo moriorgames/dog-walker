@@ -1,6 +1,6 @@
 <?php
 
-namespace WebFront\UI\Symfony\Controller;
+namespace WebFront\UI\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 

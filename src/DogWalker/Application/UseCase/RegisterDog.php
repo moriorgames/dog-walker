@@ -20,9 +20,9 @@ class RegisterDog
         $this->dogTransformer = $dogTransformer;
     }
 
-    public function execute(RegisterDogRequest $input): array
+    public function execute(RegisterDogRequest $request): array
     {
-        $dog = Dog::create(new DogId, $input->getOwner(), $input->getName(), $input->getBreed(), $input->getAge());
+        $dog = Dog::create(new DogId, $request->getOwner(), $request->getName(), $request->getBreed(), $request->getAge());
         $this->dogRepository->save($dog);
 
         return $this->dogTransformer->transform($dog);

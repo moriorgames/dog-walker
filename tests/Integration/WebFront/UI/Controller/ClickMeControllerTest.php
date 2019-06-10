@@ -1,19 +1,20 @@
 <?php
 
-namespace Integration\WebFront\UI\Symfony\Controller;
+namespace Integration\WebFront\UI\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndexControllerTest extends WebTestCase
+class ClickMeControllerTest extends WebTestCase
 {
-    public function test_is_able_to_handle_index_controller()
+    public function test_is_able_to_handle_click_me_controller()
     {
         $client = static::createClient();
-        $route = $client->getContainer()->get('router')->generate('index');
+        $route = $client->getContainer()->get('router')->generate('click_me');
 
         $client->request('GET', $route);
 
         $this->assertEquals(Response::HTTP_OK, $client->getResponse()->getStatusCode());
     }
 }
+
