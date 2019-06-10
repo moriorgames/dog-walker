@@ -1,6 +1,6 @@
 <?php
 
-namespace DogWalker\UI\Symfony\Controller;
+namespace DogWalker\UI\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

@@ -19,7 +19,7 @@
 
     <php>
         <env name="APP_ENV" value="test" force="true"/>
-        <server name="KERNEL_CLASS" value="SharedKernel\UI\Symfony\Kernel"/>
+        <server name="KERNEL_CLASS" value="SharedKernel\UI\Kernel"/>
     </php>
 
     <testsuites>
@@ -32,7 +32,7 @@
         <whitelist>
             <directory>src</directory>
             <exclude>
-                <file>src/SharedKernel/UI/Symfony/Kernel.php</file>
+                <file>src/SharedKernel/UI/Kernel.php</file>
             </exclude>
         </whitelist>
     </filter>

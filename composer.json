@@ -6,7 +6,9 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
+        "nelmio/api-doc-bundle": "^3.4",
         "ramsey/uuid": "^3.8",
+        "symfony/asset": "4.3.*",
         "symfony/browser-kit": "4.3.*",
         "symfony/console": "4.3.*",
         "symfony/dotenv": "4.3.*",
@@ -14,6 +16,7 @@
         "symfony/framework-bundle": "4.3.*",
         "symfony/orm-pack": "^1.0",
         "symfony/routing": "4.3.*",
+        "symfony/twig-bundle": "4.3.*",
         "symfony/yaml": "4.3.*",
         "webmozart/assert": "^1.4"
     },

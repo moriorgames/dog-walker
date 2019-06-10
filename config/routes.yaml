@@ -1,24 +1,24 @@
 dog_register:
     path: /dog
-    controller: DogWalker\UI\Symfony\Controller\RegisterDogController::handle
+    controller: DogWalker\UI\Controller\RegisterDogController::handle
     methods: POST
 
 dog_details:
     path: /dog/{dog_uuid}
-    controller: DogWalker\UI\Symfony\Controller\DogDetailsController::handle
+    controller: DogWalker\UI\Controller\DogDetailsController::handle
     methods: GET
 
 click_me:
     path: /click_me
-    controller: WebFront\UI\Symfony\Controller\ClickMeController::handle
+    controller: WebFront\UI\Controller\ClickMeController::handle
     methods: GET
 
 health:
     path: /health
-    controller: WebFront\UI\Symfony\Controller\HealthController::handle
+    controller: WebFront\UI\Controller\HealthController::handle
     methods: GET
 
 index:
     path: /
-    controller: WebFront\UI\Symfony\Controller\IndexController::handle
+    controller: WebFront\UI\Controller\IndexController::handle
     methods: GET

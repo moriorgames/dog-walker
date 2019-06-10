@@ -1,15 +1,37 @@
 <?php
 
-namespace DogWalker\UI\Symfony\Controller;
+namespace DogWalker\UI\Controller;
 
 use DogWalker\Application\UseCase\RegisterDog;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use DogWalker\Application\UseCase\RegisterDogRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Swagger\Annotations as SWG;
 
 class RegisterDogController
 {
+    /**
+     * Register a dog
+     *
+     * @SWG\Post(
+     *    consumes={"application/json"},
+     *    produces={"application/json"},
+     *     @SWG\Parameter(
+     *         name="body",
+     *         in="body",
+     *         type="object",
+     *         @Model(type=DogWalker\Application\UseCase\RegisterDogRequest::class)
+     *     )
+     * )
+     * @SWG\Response(response=201, description="Created")
+     *
+     * @param Request     $request
+     * @param RegisterDog $service
+     *
+     * @return JsonResponse
+     */
     public function handle(Request $request, RegisterDog $service)
     {
         $input = new RegisterDogRequest(

@@ -1,6 +1,6 @@
 <?php
 
-namespace Integration\DogWalker\UI\Symfony\Controller;
+namespace Integration\DogWalker\UI\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
@@ -34,6 +34,29 @@ class DogControllersTest extends WebTestCase
         ];
 
         $this->client->request(Request::METHOD_POST, $route, $postData);
+
+        $response = json_decode($this->client->getResponse()->getContent(), true);
+        $this->assertEquals(Response::HTTP_CREATED, $this->client->getResponse()->getStatusCode());
+        $this->assertArrayHasKey('uuid', $response['data']);
+        $this->assertArrayHasKey('owner', $response['data']);
+
+        return $response['data']['uuid'];
+    }
+
+    public function test_is_able_to_register_a_dog_posting_json_data()
+    {
+        $route = $this->router->generate('dog_register');
+
+        $postData = [
+            'owner' => '33f2cdaa-fd6d-4528-b899-1425f2095c82',
+            'name'  => 'Lua',
+            'breed' => 'Greyhound',
+            'age'   => 6,
+        ];
+
+        $this->client->request(
+            Request::METHOD_POST, $route, [], [], ['CONTENT_TYPE' => 'application/json'], json_encode($postData)
+        );
 
         $response = json_decode($this->client->getResponse()->getContent(), true);
         $this->assertEquals(Response::HTTP_CREATED, $this->client->getResponse()->getStatusCode());

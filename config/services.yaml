@@ -11,16 +11,16 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     DogWalker\:
         resource: '../src/DogWalker/*'
-        exclude: '../src/DogWalker/UI/Symfony/{DependencyInjection,Kernel.php}'
+        exclude: '../src/DogWalker/UI/{DependencyInjection,Kernel.php}'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
-    DogWalker\UI\Symfony\Controller\:
-        resource: '../src/DogWalker/UI/Symfony/Controller'
+    DogWalker\UI\Controller\:
+        resource: '../src/DogWalker/UI/Controller'
         tags: ['controller.service_arguments']
 
-    WebFront\UI\Symfony\Controller\:
-        resource: '../src/WebFront/UI/Symfony/Controller'
+    WebFront\UI\Controller\:
+        resource: '../src/WebFront/UI/Controller'
         tags: ['controller.service_arguments']
 
     # Custom services
@@ -29,3 +29,7 @@ services:
 
     # Custom bindings
     DogWalker\Domain\Repository\DogRepository: '@app.dog_repository'
+
+    #Event Subscribers bindings
+    Symfony\Component\EventDispatcher\EventSubscriberInterface:
+        class: SharedKernel\UI\EventSubscriber\BeforeActionSubscriber
