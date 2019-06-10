@@ -1,0 +1,12 @@
+DogWalker\Application\UseCase\RegisterDogRequest:
+    properties:
+        owner:
+        -   NotBlank: ~
+        name:
+        -   NotBlank: ~
+        breed:
+        -   NotBlank: ~
+        age:
+        -   NotBlank: ~
+        -   Type: numeric
+        -   GreaterThanOrEqual: 0

@@ -5,12 +5,13 @@ namespace DogWalker\UI\Controller;
 use DogWalker\Application\UseCase\RegisterDog;
 use Nelmio\ApiDocBundle\Annotation\Model;
 use DogWalker\Application\UseCase\RegisterDogRequest;
+use SharedKernel\UI\Controller\RequestValidable;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Swagger\Annotations as SWG;
 
-class RegisterDogController
+class RegisterDogController implements RequestValidable
 {
     /**
      * Register a dog

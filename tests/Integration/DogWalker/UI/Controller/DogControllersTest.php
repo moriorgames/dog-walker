@@ -2,6 +2,7 @@
 
 namespace Integration\DogWalker\UI\Controller;
 
+use SharedKernel\UI\Exception\RequestValidationException;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -62,8 +63,19 @@ class DogControllersTest extends WebTestCase
         $this->assertEquals(Response::HTTP_CREATED, $this->client->getResponse()->getStatusCode());
         $this->assertArrayHasKey('uuid', $response['data']);
         $this->assertArrayHasKey('owner', $response['data']);
+    }
 
-        return $response['data']['uuid'];
+    public function test_throws_request_validation_exception()
+    {
+        $route = $this->router->generate('dog_register');
+
+        $postData = [];
+
+        $this->client->request(
+            Request::METHOD_POST, $route, [], [], ['CONTENT_TYPE' => 'application/json'], json_encode($postData)
+        );
+
+        $this->assertEquals(Response::HTTP_INTERNAL_SERVER_ERROR, $this->client->getResponse()->getStatusCode());
     }
 
     /**

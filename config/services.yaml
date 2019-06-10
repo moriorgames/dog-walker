@@ -30,6 +30,13 @@ services:
     # Custom bindings
     DogWalker\Domain\Repository\DogRepository: '@app.dog_repository'
 
-    #Event Subscribers bindings
-    Symfony\Component\EventDispatcher\EventSubscriberInterface:
-        class: SharedKernel\UI\EventSubscriber\BeforeActionSubscriber
+    # Event Subscribers bindings
+    app.request_json_decoder:
+        class: SharedKernel\UI\EventSubscriber\RequestJsonDecoderSubscriber
+        tags:
+        - { name: kernel.event_subscriber, event: kernel.controller }
+
+    app.request_validator:
+        class: SharedKernel\UI\EventSubscriber\RequestValidatorSubscriber
+        tags:
+        - { name: kernel.event_subscriber, event: kernel.controller }
