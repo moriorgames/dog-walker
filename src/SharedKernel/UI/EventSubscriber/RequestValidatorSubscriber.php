@@ -3,17 +3,23 @@
 namespace SharedKernel\UI\EventSubscriber;
 
 use ReflectionClass;
+use ReflectionMethod;
+use ReflectionParameter;
 use SharedKernel\UI\Controller\RequestValidable;
 use SharedKernel\UI\Exception\RequestValidationException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class RequestValidatorSubscriber implements EventSubscriberInterface
 {
+    public const CONTROLLER_METHOD = 'handle';
+
+    private const USE_CASE_PARAM_SUFFIX = 'Request';
+
     /**
      * @var ValidatorInterface
      */
@@ -24,27 +30,50 @@ class RequestValidatorSubscriber implements EventSubscriberInterface
         $this->validator = $validator;
     }
 
-    public function validate(FilterControllerEvent $event)
+    public function validate(ControllerEvent $event)
     {
         $controller = $event->getController();
 
-        if (!is_array($controller)) {
-            return;
+        if (!$this->isValidControllerToBeValidated($controller)) {
+            return false;
         }
 
-        if ($controller[0] instanceof RequestValidable) {
-            $command = str_replace(
-                ['UI\Controller', 'Controller'],
-                ['Application\UseCase', 'Request'],
-                get_class($controller[0])
-            );
-            $this->validateCommandFromRequest($event->getRequest(), $command);
+        $controllerName = get_class($controller[0]);
+        $reflectionMethod = new ReflectionMethod($controllerName, self::CONTROLLER_METHOD);
+        /** @var ReflectionParameter $param */
+        foreach ($reflectionMethod->getParameters() as $param) {
+            if ($param->getPosition() === 1) {
+                $paramClass = $param->getType()->getName() . self::USE_CASE_PARAM_SUFFIX;
+                if (!class_exists($paramClass)) {
+                    return false;
+                }
+                $this->validateParamFromRequest($event->getRequest(), $paramClass);
+
+                return true;
+            }
         }
+
+        return false;
     }
 
-    private function validateCommandFromRequest(Request $request, string $commandClass): void
+    private function isValidControllerToBeValidated($controller): bool
     {
-        $reflectionClass = new ReflectionClass($commandClass);
+        if (!is_array($controller)) {
+            return false;
+        }
+        if (!$controller[0] instanceof RequestValidable) {
+            return false;
+        }
+        if (!method_exists($controller[0], self::CONTROLLER_METHOD)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function validateParamFromRequest(Request $request, string $paramClass): void
+    {
+        $reflectionClass = new ReflectionClass($paramClass);
         $rc = $reflectionClass->newInstanceWithoutConstructor();
 
         $properties = $reflectionClass->getProperties();
