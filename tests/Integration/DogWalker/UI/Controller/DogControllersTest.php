@@ -2,7 +2,6 @@
 
 namespace Integration\DogWalker\UI\Controller;
 
-use SharedKernel\UI\Exception\RequestValidationException;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
